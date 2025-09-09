@@ -8,6 +8,9 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
+floating_modifier $mod
+tiling_drag modifier titlebar
+
 bindsym $mod+Return exec kitty
 
 bindsym $mod+Shift+q kill
@@ -58,6 +61,11 @@ bindsym $mod+Shift+0 move container to workspace number $ws10
 bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exit
 
+default_border pixel 2
+default_floating_border pixel 2
+
+gaps inner 20
+
 client.focused           #b4befe #1e1e2e #cdd6f4 #b4befe #b4befe
 client.focused_inactive  #6c7086 #1e1e2e #cdd6f4 #6c7086 #6c7086
 client.unfocused         #6c7086 #1e1e2e #cdd6f4 #6c7086 #6c7086
@@ -68,30 +76,24 @@ client.background        #1e1e2e
 
 bar {
 	position top
-  	tray_output none
-	status_command i3status
-	colors {
-  	  background          #1e1e2e
-  	  statusline          #cdd6f4
-  	  focused_statusline  #cdd6f4
-  	  focused_separator   #1e1e2e
+		tray_output none
+		status_command i3status
+		colors {
+			background          #1e1e2e
+				statusline          #cdd6f4
+				focused_statusline  #cdd6f4
+				focused_separator   #1e1e2e
 
-  	  focused_workspace   #1e1e2e  #cba6f7  #11111b
-  	  active_workspace    #1e1e2e  #585b70  #cdd6f4
-  	  inactive_workspace  #1e1e2e  #1e1e2e  #cdd6f4
-  	  urgent_workspace    #1e1e2e  #f38ba8  #11111b
-  	}
+				focused_workspace   #1e1e2e  #cba6f7  #11111b
+				active_workspace    #1e1e2e  #585b70  #cdd6f4
+				inactive_workspace  #1e1e2e  #1e1e2e  #cdd6f4
+				urgent_workspace    #1e1e2e  #f38ba8  #11111b
+		}
 }
-
-default_border pixel 2
-default_floating_border pixel 2
-
-gaps inner 20
-
 exec --no-startup-id xset s off -dpms
 exec --no-startup-id picom -b --backend glx --vsync
 exec --no-startup-id redshift -l 48:2
-exec --no-startup-id feh --bg-scale ~/Pictures/wallpaper/moons.jpg
+exec --no-startup-id feh --bg-scale ~/Pictures/wallpaper/serenity.jpg
 
 bindsym $mod+d exec --no-startup-id rofi -show drun -font "JetBrainsMono NF 12"
 bindsym $mod+Escape exec --no-startup-id i3lock -uec 000000
