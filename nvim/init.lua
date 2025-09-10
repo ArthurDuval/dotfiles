@@ -20,9 +20,6 @@ vim.g.have_nerd_font = true
 vim.o.number = true
 vim.o.relativenumber = true
 vim.o.showmode = false
-vim.schedule(function()
-	vim.o.clipboard = 'unnamedplus'
-end)
 vim.o.breakindent = true
 vim.o.undofile = true
 vim.o.ignorecase = true
@@ -40,13 +37,22 @@ vim.o.scrolloff = 10
 vim.o.expandtab = false
 vim.o.tabstop = 4
 vim.o.shiftwidth = 4
-vim.o.colorcolumn = "80"
+vim.o.colorcolumn = '80'
+
+vim.schedule(function()
+	vim.o.clipboard = 'unnamedplus'
+end)
 
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
 require("lazy").setup({
 	spec = {
-		{ "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+		{
+			"folke/tokyonight.nvim",
+			lazy = false,
+			priority = 1000,
+			opts = {},
+		},
 
 		{
 			"nvim-treesitter/nvim-treesitter",
@@ -149,14 +155,14 @@ require("lazy").setup({
 					extensions = {}
 				}
 			end
-		}
+		},
 
 	},
 	install = { colorscheme = { "habamax" } },
 	checker = { enabled = true },
 })
 
-vim.cmd.colorscheme "catppuccin-mocha"
+vim.cmd[[colorscheme tokyonight-night]]
 vim.diagnostic.config({ virtual_text = true })
 
 local builtin = require('telescope.builtin')

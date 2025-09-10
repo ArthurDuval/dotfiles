@@ -1,7 +1,7 @@
 general {
 	colors = true
-		interval = 5
-		separator = ""
+	interval = 5
+	separator = ""
 }
 
 order += "volume master"
@@ -9,8 +9,10 @@ order += "tztime local"
 
 volume master {
 	format = "♪ %volume"
-		format_muted = "♪ muted (%volume)"
-		device = "default"
+	format_muted = "♪ muted"
+	device = "default"
+	mixer = "Master"
+	mixer_idx = 0
 }
 
 tztime local {
