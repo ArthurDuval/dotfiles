@@ -64,8 +64,9 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exit
 
 bar {
+	position top
 	tray_output none
-        status_command i3status
+	status_command i3status
 }
 
 default_border none
