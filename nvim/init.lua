@@ -48,7 +48,17 @@ vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 require("lazy").setup({
 	spec = {
 
-		{ "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+		{
+			"folke/tokyonight.nvim",
+			lazy = false,
+			priority = 1000,
+			opts = {},
+			config = function()
+				require("tokyonight").setup({
+					transparent = true
+				})
+			end
+		},
 
 		{
 			"nvim-treesitter/nvim-treesitter",
@@ -158,7 +168,7 @@ require("lazy").setup({
 	checker = { enabled = true },
 })
 
-vim.cmd.colorscheme "catppuccin-mocha"
+vim.cmd.colorscheme "tokyonight-night"
 vim.diagnostic.config({ virtual_text = true })
 
 local builtin = require('telescope.builtin')
