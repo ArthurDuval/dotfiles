@@ -1,7 +1,7 @@
 general {
 	colors = true
 	interval = 5
-	separator = "|"
+	separator = ""
 }
 
 order += "battery all"
@@ -9,7 +9,7 @@ order += "volume master"
 order += "tztime local"
 
 battery all {
-	format = "%status %percentage "
+	format = "%status %percentage |"
 		status_chr = "CHR"
 		status_bat = "BAT"
 		low_threshold = 20
@@ -27,5 +27,5 @@ volume master {
 }
 
 tztime local {
-	format = "%Y-%m-%d %I:%M %p"
+	format = "| %Y-%m-%d %I:%M %p "
 }
