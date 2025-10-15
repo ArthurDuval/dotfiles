@@ -49,13 +49,12 @@ require("lazy").setup({
 	spec = {
 
 		{
-			"folke/tokyonight.nvim",
-			lazy = false,
+			"catppuccin/nvim",
+			name = "catppuccin",
 			priority = 1000,
-			opts = {},
 			config = function()
-				require("tokyonight").setup({
-					transparent = true
+				require("catppuccin").setup({
+					transparent_background = true,
 				})
 			end
 		},
@@ -168,7 +167,7 @@ require("lazy").setup({
 	checker = { enabled = true },
 })
 
-vim.cmd.colorscheme "tokyonight-night"
+vim.cmd.colorscheme "catppuccin-mocha"
 vim.diagnostic.config({ virtual_text = true })
 
 local builtin = require('telescope.builtin')

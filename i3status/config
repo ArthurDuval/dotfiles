@@ -4,19 +4,8 @@ general {
 	separator = ""
 }
 
-order += "battery all"
 order += "volume master"
 order += "tztime local"
-
-battery all {
-	format = "%status %percentage |"
-		status_chr = "CHR"
-		status_bat = "BAT"
-		low_threshold = 20
-		integer_battery_capacity = true
-		threshold_type = percentage
-		color_bad = "#FF0000"
-}
 
 volume master {
 	format = "♪ %volume"

@@ -1,6 +1,6 @@
 set $mod Mod4
 
-font pango:JetBrainsMono NF 10
+font pango:JetBrainsMono NF, Bold 10
 
 set $refresh_i3status killall -SIGUSR1 i3status
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
@@ -74,9 +74,7 @@ default_floating_border none
 
 exec --no-startup-id xset s off -dpms
 exec --no-startup-id picom -b --backend glx --vsync
-exec --no-startup-id feh --bg-scale ~/Pictures/wallpaper/galaxy-waves.jpg
+exec --no-startup-id feh --bg-scale ~/Pictures/wallpaper/trippy-purple.png
 
 bindsym $mod+Escape exec --no-startup-id i3lock -uec 000000
 bindsym $mod+Shift+s exec --no-startup-id flameshot gui
-bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +10%
-bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 10%-
