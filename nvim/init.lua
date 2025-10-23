@@ -48,16 +48,7 @@ vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 require("lazy").setup({
 	spec = {
 
-		{
-			"catppuccin/nvim",
-			name = "catppuccin",
-			priority = 1000,
-			config = function()
-				require("catppuccin").setup({
-					transparent_background = true,
-				})
-			end
-		},
+		{ "catppuccin/nvim", name = "catppuccin", priority = 1000 },
 
 		{
 			"nvim-treesitter/nvim-treesitter",
@@ -159,6 +150,54 @@ require("lazy").setup({
 					inactive_winbar = {},
 					extensions = {}
 				}
+			end
+		},
+
+		{
+			"hrsh7th/nvim-cmp",
+			dependencies = {
+				"hrsh7th/cmp-nvim-lsp",
+				"hrsh7th/cmp-buffer",
+				"hrsh7th/cmp-path",
+				"hrsh7th/cmp-cmdline",
+				"hrsh7th/vim-vsnip",
+				"hrsh7th/cmp-vsnip",
+			},
+			config = function()
+				local cmp = require("cmp")
+				cmp.setup({
+					snippet = {
+						expand = function(args)
+							vim.fn["vsnip#anonymous"](args.body)
+						end,
+					},
+					mapping = cmp.mapping.preset.insert({
+						["<C-b>"] = cmp.mapping.scroll_docs(-4),
+						["<C-f>"] = cmp.mapping.scroll_docs(4),
+						["<C-Space>"] = cmp.mapping.complete(),
+						["<C-e>"] = cmp.mapping.abort(),
+						["<CR>"] = cmp.mapping.confirm({ select = true }),
+					}),
+					sources = cmp.config.sources({
+						{ name = "nvim_lsp" },
+						{ name = "vsnip" },
+					}, {
+						{ name = "buffer" },
+					}),
+				})
+
+				local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
+				vim.lsp.config('lua_ls', {
+					capabilities = capabilities,
+					settings = {
+						Lua = {
+							diagnostics = { globals = { 'vim' } },
+						},
+					},
+				})
+
+				vim.lsp.enable('lua_ls')
 			end
 		},
 
