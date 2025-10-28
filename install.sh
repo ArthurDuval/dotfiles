@@ -15,7 +15,8 @@ cd ..
 rm -rf yay
 
 yay -S	xorg i3-wm i3lock polybar rofi kitty neovim firefox zsh xclip ripgrep \
-		unzip polkit ly discord spotify tree feh flameshot picom openssh
+	 	unzip polkit ly discord spotify tree feh flameshot picom \
+		openssh nvidia
 
 sudo systemctl enable ly
 
