@@ -22,12 +22,18 @@ sudo systemctl enable ly
 
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
+curl -LO https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/JetBrainsMono.zip
+mkdir ~/.local/share/fonts
+unzip -d JetBrainsMono JetBrainsMono.zip
+mv JetBrainsMono ~/.local/share/fonts
+rm JetBrainsMono.zip
+fc-cache -fv
+
 mkdir -p ~/Pictures/wallpaper
 mkdir ~/.config/kitty
 mkdir ~/.config/nvim
 mkdir ~/.config/polybar
 mkdir ~/.config/rofi
-
 cp i3/* ~/.config/i3
 cp kitty/* ~/.config/kitty
 cp nvim/* ~/.config/nvim
