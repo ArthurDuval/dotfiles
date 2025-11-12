@@ -105,7 +105,7 @@ gaps inner 20
 
 exec --no-startup-id xset s off -dpms
 exec --no-startup-id picom -b --backend glx --vsync
-exec --no-startup-id feh --bg-scale ~/Pictures/wallpaper/trippy-purple.png
+exec --no-startup-id feh --bg-scale ~/Pictures/wallpaper/arch.png
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 bindsym $mod+Escape exec --no-startup-id i3lock -uec 000000
