@@ -15,7 +15,7 @@ bindsym $mod+Return exec kitty
 
 bindsym $mod+Shift+q kill
 
-bindsym $mod+d exec --no-startup-id rofi -show drun -font "JetBrainsMono NF 12"
+bindsym $mod+d exec --no-startup-id dmenu_run -fn 'JetBrainsMono NF-12'
 
 bindsym $mod+h focus left
 bindsym $mod+j focus down
@@ -26,6 +26,8 @@ bindsym $mod+Shift+h move left
 bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
+
+bindsym $mod+f fullscreen toggle
 
 set $ws1 "1"
 set $ws2 "2"
@@ -63,52 +65,19 @@ bindsym $mod+Shift+0 move container to workspace number $ws10
 bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exit
 
-set $rosewater #f5e0dc
-set $flamingo #f2cdcd
-set $pink #f5c2e7
-set $mauve #cba6f7
-set $red #f38ba8
-set $maroon #eba0ac
-set $peach #fab387
-set $yellow #f9e2af
-set $green #a6e3a1
-set $teal #94e2d5
-set $sky #89dceb
-set $sapphire #74c7ec
-set $blue #89b4fa
-set $lavender #b4befe
-set $text #cdd6f4
-set $subtext1 #bac2de
-set $subtext0 #a6adc8
-set $overlay2 #9399b2
-set $overlay1 #7f849c
-set $overlay0 #6c7086
-set $surface2 #585b70
-set $surface1 #45475a
-set $surface0 #313244
-set $base #1e1e2e
-set $mantle #181825
-set $crust #11111b
-
-# target                 title     bg    text   indicator  border
-client.focused           $lavender $base $text  $lavender  $lavender
-client.focused_inactive  $overlay0 $base $text  $rosewater $overlay0
-client.unfocused         $overlay0 $base $text  $rosewater $overlay0
-client.urgent            $peach    $base $peach $overlay0  $peach
-client.placeholder       $overlay0 $base $text  $overlay0  $overlay0
-client.background        $base
-
-default_border pixel 2
-default_floating_border pixel 2
-
-gaps inner 20
+default_border none
+default_floating_border none
+for_window [all] fullscreen enable
 
 exec --no-startup-id xset s off -dpms
 exec --no-startup-id picom -b --backend glx --vsync
-exec --no-startup-id feh --bg-scale ~/Pictures/wallpaper/arch.png
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 bindsym $mod+Escape exec --no-startup-id i3lock -uec 000000
 bindsym $mod+Shift+s exec --no-startup-id flameshot gui
 bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +10%
 bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 10%-
+
+bar {
+	status_command i3status
+	tray_output none
+}

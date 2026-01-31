@@ -48,16 +48,7 @@ vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 require("lazy").setup({
 	spec = {
 
-		{
-			"catppuccin/nvim",
-			name = "catppuccin",
-			priority = 1000,
-			config = function()
-				require("catppuccin").setup({
-					transparent_background = true,
-				})
-			end
-		},
+		{ "catppuccin/nvim", name = "catppuccin", priority = 1000 },
 
 		{
 			"nvim-treesitter/nvim-treesitter",
