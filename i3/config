@@ -1,6 +1,6 @@
 set $mod Mod4
 
-font pango:JetBrainsMono NF, Bold 10
+font pango:JetBrainsMono NF Bold 8
 
 set $refresh_i3status killall -SIGUSR1 i3status
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
@@ -8,14 +8,11 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
-floating_modifier $mod
-tiling_drag modifier titlebar
-
 bindsym $mod+Return exec kitty
 
 bindsym $mod+Shift+q kill
 
-bindsym $mod+d exec --no-startup-id dmenu_run -fn 'JetBrainsMono NF-12'
+bindsym $mod+d exec --no-startup-id dmenu_run -fn 'JetBrainsMono NF'
 
 bindsym $mod+h focus left
 bindsym $mod+j focus down
@@ -66,15 +63,14 @@ bindsym $mod+Shift+e exit
 default_border none
 default_floating_border none
 
-exec --no-startup-id xset s off -dpms
 exec --no-startup-id picom -b --backend glx --vsync
-exec_always --no-startup-id feh --bg-scale ~/Pictures/wallpaper/tropic_island_night.jpg
+exec --no-startup-id redshift -l 48:2
 
 bindsym $mod+Escape exec --no-startup-id i3lock -uec 000000
 bindsym $mod+Shift+s exec --no-startup-id flameshot gui
 
 bar {
-	status_command i3status
-	tray_output none
+        status_command i3status
 	position top
+	tray_output none
 }
