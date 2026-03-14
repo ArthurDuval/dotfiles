@@ -3,13 +3,9 @@ return {
 	dependencies = { 'nvim-tree/nvim-web-devicons' },
 	opts = {
 		options = {
-			theme = 'palenight',
+			theme = 'auto',
 			component_separators = { left = '|', right = '|'},
-			section_separators = '',
-			disabled_filetypes = {
-				statusline = {},
-				winbar = {},
-			}
+			section_separators = ''
 		}
 	}
 }

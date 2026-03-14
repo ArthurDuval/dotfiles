@@ -1,3 +1,5 @@
+vim.keymap.set('n', '<leader>x', '<cmd>Explore<CR>')
+
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
 vim.diagnostic.config {
